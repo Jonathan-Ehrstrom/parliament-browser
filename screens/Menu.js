@@ -16,6 +16,7 @@ export const Menu = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>View Persons</Text>
       </TouchableOpacity>
+
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate("Roles")}

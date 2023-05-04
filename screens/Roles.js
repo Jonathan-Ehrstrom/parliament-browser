@@ -11,7 +11,7 @@ export const Roles = ({ navigation }) => {
 
   useEffect(() => {
     axios
-      .get("https://api.lagtinget.ax/api/roles.json?state=1")
+      .get("https://api.lagtinget.ax/api/persons.json?state=1")
       .then((response) => {
         setData(response.data);
         setFilteredData(response.data);
