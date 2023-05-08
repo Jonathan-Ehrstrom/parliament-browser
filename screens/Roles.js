@@ -11,7 +11,7 @@ export const Roles = ({ navigation }) => {
 
   useEffect(() => {
     axios
-      .get("https://api.lagtinget.ax/api/persons.json?state=1")
+      .get("https://api.lagtinget.ax/api/roles.json?state=1")
       .then((response) => {
         setData(response.data);
         setFilteredData(response.data);
@@ -27,22 +27,26 @@ export const Roles = ({ navigation }) => {
     if (newSearch === "") {
       setFilteredData(require("../mock/persons.json"));
     } else {
-      const filtered = data.filter((role) =>
-        role.name.toLowerCase().includes(newSearch.toLowerCase())
+      const filtered = data.filter((persons) =>
+        persons.title.toLowerCase().includes(newSearch.toLowerCase())
       );
       setFilteredData(filtered);
     }
   };
 
-  const onPressRole = (role) => {
-    navigation.navigate("PersonsByRole", { role });
+  const onPressRole = (title) => {
+    navigation.navigate("PersonsByRole", { title });
   };
 
   const renderItem = ({ item }) => (
-    <ListItem bottomDivider onPress={() => onPressRole(item.user_role)}>
+    <ListItem
+      bottomDivider
+      onPress={() =>
+        navigation.navigate("People", { title: item.title, id: item.id })
+      }
+    >
       <ListItem.Content>
-        <ListItem.Title>{item.name}</ListItem.Title>
-        <ListItem.Subtitle>Role: {item.user_role}</ListItem.Subtitle>
+        <ListItem.Title>{item.title}</ListItem.Title>
       </ListItem.Content>
       <ListItem.Chevron />
     </ListItem>

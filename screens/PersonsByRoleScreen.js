@@ -11,7 +11,7 @@ export const PersonsByRoleScreen = ({ navigation, route }) => {
     const { role } = route.params;
 
     axios
-      .get("https://api.lagtinget.ax/api/roles.json?state=1")
+      .get("https://api.lagtinget.ax/api/persons.json?state=1")
 
       .then((response) => {
         setData(response.data.users);
@@ -26,7 +26,6 @@ export const PersonsByRoleScreen = ({ navigation, route }) => {
     <ListItem bottomDivider>
       <ListItem.Content>
         <ListItem.Title>{item.full_name}</ListItem.Title>
-        <ListItem.Subtitle>Email: {item.email}</ListItem.Subtitle>
       </ListItem.Content>
     </ListItem>
   );
